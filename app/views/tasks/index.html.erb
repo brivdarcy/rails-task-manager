@@ -1,0 +1,20 @@
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <% if task.completed %>
+        <%= image_tag "coche.png", class:"image" %>
+      <% else  %>
+        <%= image_tag "decoche.png", class:"image" %>
+      <% end %>
+      <%= link_to task.title, task_path(task) %>
+
+      <%= link_to image_tag('corbeille.png', class:"image"),
+                task_path(task),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Create a new task", new_task_path %>
+
